@@ -1,9 +1,12 @@
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const { config } = require('dotenv');
+
+config();
 
 const app = express();
 
-const TARGET = 'https://symposium.jkartik.in';
+const TARGET = process.env.TARGET;
 
 app.use('/', createProxyMiddleware({
   target: TARGET,
